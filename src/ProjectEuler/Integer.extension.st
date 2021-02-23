@@ -10,6 +10,24 @@ result := 0.
 ]
 
 { #category : #'*ProjectEuler' }
+Integer >> isAbundant [
+
+^ self properDivisorSum > self.
+]
+
+{ #category : #'*ProjectEuler' }
+Integer >> isDeficient [
+
+^ self properDivisorSum < self.
+]
+
+{ #category : #'*ProjectEuler' }
+Integer >> isPerfectNumber [
+
+^ self properDivisorSum = self.
+]
+
+{ #category : #'*ProjectEuler' }
 Integer >> primeDivisorList [
 
 | list k |
@@ -33,7 +51,8 @@ Integer >> properDivisorSum [
 divisors := self primeDivisorList reject: [ :a | a = self ].
 powers := Array new: divisors size.
 divisors doWithIndex: [ :d :i | powers at: i put: (self divisorPower: d) ].
-sum := 0.
-divisors doWithIndex: [ :d :i | sum := sum + ((d ** (powers at: i) - 1) / (d - 1)) ].
+sum := 1.
+divisors doWithIndex: [ :d :i | sum := sum * ((d ** ((powers at: i) + 1) - 1) / (d - 1)) ].
+sum := sum - self.
 ^ sum
 ]
