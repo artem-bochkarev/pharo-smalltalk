@@ -1,14 +1,21 @@
 Class {
 	#name : #EulerProjectTest,
 	#superclass : #TestCase,
+	#instVars : [
+		'euler'
+	],
 	#category : #ProjectEuler
 }
 
+{ #category : #running }
+EulerProjectTest >> setUp [
+	"Hooks that subclasses may override to define the fixture of test."
+	super setUp.
+euler := EulerProject new.
+]
+
 { #category : #tests }
 EulerProjectTest >> testCanBeSumOfTwoValues [
-
-|euler|
-euler := EulerProject new.
 
 self assert: (euler can: 24 beSumOfTwoValues: #(12 18 24)).
 
@@ -24,7 +31,18 @@ self assert: (100 divisorPower: 5) equals: 2.
 { #category : #tests }
 EulerProjectTest >> testId22 [
 
-self assert: EulerProject new id22 equals: 871198282
+self assert: euler id22 equals: 871198282
+]
+
+{ #category : #tests }
+EulerProjectTest >> testId24 [
+
+self assert: (euler id24: 0) equals: '0123456789'.
+self assert: (euler id24: 1) equals: '0123456798'.
+self assert: (euler id24: 2) equals: '0123456879'.
+self assert: (euler id24: 3) equals: '0123456897'.
+self assert: (euler id24: 4) equals: '0123456978'.
+self assert: (euler id24: 5) equals: '0123456987'.
 ]
 
 { #category : #tests }

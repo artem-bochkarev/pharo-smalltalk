@@ -58,3 +58,53 @@ abundands := OrderedCollection new.
 
 
 ]
+
+{ #category : #problems }
+EulerProject >> id24 [
+
+^self id24: 1000000 - 1
+]
+
+{ #category : #problems }
+EulerProject >> id24: in [
+
+| input n m x result |
+input := #(0 1 2 3 4 5 6 7 8 9) asOrderedCollection.
+n := in % 10 factorial.
+result := String new.
+9 to: 0 by: -1 do: [ :k |
+	x := k factorial.
+	m := n // x + 1.
+	n := n % x.
+	result := result, (input at: m) asString.
+	input removeAt: m.
+	].
+^ result
+
+]
+
+{ #category : #problems }
+EulerProject >> id25 [
+
+| a b i c|
+i := 12.
+a := 89.
+b := 144.
+[ b asString size < 1000 ] whileTrue: [ 
+	c := a + b.
+	a := b.
+	b := c.
+	i := i + 1.
+	 ].
+^ i
+
+]
+
+{ #category : #problems }
+EulerProject >> id26 [
+"not true =)"
+1000 to: 1 by: -1 do: [ :i |
+	i isPrime ifTrue: [ ^ i ] ].
+^1
+
+]
