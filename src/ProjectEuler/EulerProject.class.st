@@ -71,15 +71,15 @@ EulerProject >> id24: in [
 | input n m x result |
 input := #(0 1 2 3 4 5 6 7 8 9) asOrderedCollection.
 n := in % 10 factorial.
-result := String new.
+result := WriteStream on: String new.
 9 to: 0 by: -1 do: [ :k |
 	x := k factorial.
 	m := n // x + 1.
 	n := n % x.
-	result := result, (input at: m) asString.
+	result nextPut:  ((input at: m) asCharacterDigit ).
 	input removeAt: m.
 	].
-^ result
+^ result contents
 
 ]
 
@@ -103,8 +103,12 @@ b := 144.
 { #category : #problems }
 EulerProject >> id26 [
 "not true =)"
-1000 to: 1 by: -1 do: [ :i |
-	i isPrime ifTrue: [ ^ i ] ].
-^1
+| a b modulos  |
+
+a := 1.
+2 to: 10 do: [ :x |
+	a := 1.
+	
+	 ].
 
 ]
