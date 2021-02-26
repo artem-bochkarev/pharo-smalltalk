@@ -103,12 +103,13 @@ b := 144.
 { #category : #problems }
 EulerProject >> id26 [
 "not true =)"
-| a b modulos  |
+| a maxLen maxX  |
 
-a := 1.
-2 to: 10 do: [ :x |
-	a := 1.
-	
+maxLen := 0.
+maxX := 2.
+2 to: 1000 do: [ :x |
+	a := (1 / x) printAsDecimalFraction size.
+	a > maxLen ifTrue: [ maxLen := a. maxX := x. ]
 	 ].
-
+^maxX
 ]

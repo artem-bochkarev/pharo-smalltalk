@@ -19,7 +19,7 @@ result nextPut: $..
 (modulos includesKey: a) ifTrue: [
 	result nextPut: $).
 	s := result contents.
-	s := (s copyFrom: 1 to: (modulos at: a)), '(', (s copyFrom: (modulos at: a)).
+	s := (s copyFrom: 1 to: (modulos at: a)), '(', (s copyFrom: 1 + (modulos at: a) to: s size).
 	^s
 	].
 

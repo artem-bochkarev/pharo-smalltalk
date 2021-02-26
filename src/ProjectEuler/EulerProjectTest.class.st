@@ -100,7 +100,7 @@ self assert: (1/3) printAsDecimalFraction equals: '0.(3)'.
 self assert: (1/4) printAsDecimalFraction equals: '0.25'.
 self assert: (1/5) printAsDecimalFraction equals: '0.2'.
 self assert: (1/6) printAsDecimalFraction equals: '0.1(6)'.
-self assert: (1/7) printAsDecimalFraction equals: '0.142857)'.
+self assert: (1/7) printAsDecimalFraction equals: '0.(142857)'.
 self assert: (1/101) printAsDecimalFraction equals: '0.(0099)'.
 self assert: (1/999) printAsDecimalFraction equals: '0.(001)'.
 
