@@ -28,6 +28,11 @@ Integer >> isPerfectNumber [
 ]
 
 { #category : #'*ProjectEuler' }
+Integer >> millions [
+^self * 1000000
+]
+
+{ #category : #'*ProjectEuler' }
 Integer >> primeDivisorList [
 
 | list k |
