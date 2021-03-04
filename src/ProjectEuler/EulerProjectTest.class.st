@@ -40,6 +40,13 @@ self assert: (euler fCoins: 4 coins: coins) equals: 3.
 ]
 
 { #category : #tests }
+EulerProjectTest >> testHasPandigitalProd [
+
+self assert: (euler hasPandigitalProd: 7254).
+ 
+]
+
+{ #category : #tests }
 EulerProjectTest >> testId1 [
 
 self assert: (euler id1: 10) equals: 23
@@ -110,6 +117,20 @@ self deny: 220 isDeficient.
 ]
 
 { #category : #tests }
+EulerProjectTest >> testIsPandigital [
+
+self assert: (euler isPandigital: 12345).
+self deny: (euler isPandigital: 123451).
+self deny: (euler isPandigital: 100).
+self deny: (euler isPandigital: 99).
+self assert: (euler isPandigital: 123456789).
+"we face 1 to 9 here"
+self deny: (euler isPandigital: 1234567890).
+self deny: (euler isPandigital: 10).
+ 
+]
+
+{ #category : #tests }
 EulerProjectTest >> testIsPerfectNumber [
 
 self assert: 28 isPerfectNumber.
@@ -129,6 +150,14 @@ self deny: ( euler is: 9475  sumOfDigitsPower: 4 ).
 self deny: ( euler is: 4947  sumOfDigitsPower: 4 ).
 self deny: ( euler is: 4361  sumOfDigitsPower: 4 ).
 
+]
+
+{ #category : #tests }
+EulerProjectTest >> testLargestPrimeFactor [
+
+self assert: (euler largestPrimeFactor: 13195 ) equals: 29.
+self assert: (euler largestPrimeFactor: 600851475143 ) equals: 6857.
+ 
 ]
 
 { #category : #tests }

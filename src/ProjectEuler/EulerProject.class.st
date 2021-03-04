@@ -16,13 +16,13 @@ EulerProject class >> nameValue: s [
 ^ (s asArray collect: [ :a | 1 + a asInteger - $A asInteger  ]) sum
 ]
 
-{ #category : #problems }
+{ #category : #helpers }
 EulerProject >> can: a beSumOfTwoValues: vector [
 
 ^ self can: a beSumOfTwoValues: vector at: vector size
 ]
 
-{ #category : #problems }
+{ #category : #helpers }
 EulerProject >> can: val beSumOfTwoValues: vector at: last [
 
 | a b x y|
@@ -84,6 +84,18 @@ aDict add: aValue -> sum.
 
 
 
+
+]
+
+{ #category : #helpers }
+EulerProject >> hasPandigitalProd: aValue [
+| remSet |
+remSet := '123456789' asSet difference: aValue asString asSet.
+2 to: aValue sqrtFloor do: [ :x |	(aValue % x = 0) ifTrue: [
+			(x asString, (aValue / x) asString) asSet = remSet ifTrue: [ ^true ]
+	]
+].
+^false
 
 ]
 
@@ -313,12 +325,62 @@ ways atAllPut: 1.
 
 ]
 
+{ #category : #problems }
+EulerProject >> id32 [
+| result |
+result := 0.
+1234 to: 9876 do: [ :x |	(self isPandigital: x) ifTrue: [
+		(self hasPandigitalProd: x)	ifTrue: [ result := result + x ]	] ].
+^result
+
+]
+
+{ #category : #helpers }
+EulerProject >> is: aValue divisibleByAny: orderedCollection [
+
+orderedCollection do: [ :x |
+	aValue % x = 0 ifTrue: [ ^true ].
+	x >= aValue sqrtFloor ifTrue: [ ^false ].
+	 ].
+
+^false
+]
+
 { #category : #helpers }
 EulerProject >> is: anInteger sumOfDigitsPower: aPower [
 
 | b |
 b := anInteger asString inject: 0 into: [ :sum :el | sum + (el digitValue ** aPower). ].
 ^ b = anInteger
+]
+
+{ #category : #helpers }
+EulerProject >> isPandigital: aValue [
+| set |
+set := aValue asString asSet.
+(set includes: $0) ifTrue: [ ^false ].
+^aValue asString size = set size
+]
+
+{ #category : #helpers }
+EulerProject >> largestPrimeFactor: aValue [
+
+|a b maxFactor result |
+a := aValue.
+result := 1.
+b := 2.
+[ a % b = 0 ] whileTrue: [ a := a / b. result := b. ].
+b := 3.
+maxFactor := a sqrtFloor.
+[ b < maxFactor ] whileTrue: [
+	( a % b = 0 ) ifTrue: [ 
+		[ a := a / b. result := b ] doWhileTrue: [ a % b = 0 ].
+		maxFactor := a sqrtFloor.
+	].
+	b := b + 2.
+].
+
+^result max: a.
 ]
 
 { #category : #helpers }
