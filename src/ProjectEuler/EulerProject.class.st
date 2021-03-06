@@ -295,7 +295,7 @@ list := OrderedCollection new.
 { #category : #problems }
 EulerProject >> id31 [
 
-^self id31: 200
+^self id31_2: 200
 
 ]
 
@@ -338,11 +338,7 @@ result := 0.
 { #category : #problems }
 EulerProject >> id35: anInteger [
 
-^(2 to: anInteger) count: [:x| |isCircPrime |
-	isCircPrime := true.
-	x asString permutationsDo: [ :str | str asInteger isPrime ifFalse:[ isCircPrime := false ] ].
-	isCircPrime
-	 ]
+^(2 to: anInteger) count: [:x| x isCircularPrime ]
 ]
 
 { #category : #helpers }

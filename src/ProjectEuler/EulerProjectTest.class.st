@@ -47,8 +47,8 @@ self assert: (euler id1: 10) equals: 23
 
 { #category : #tests }
 EulerProjectTest >> testId22 [
-
-self assert: euler id22 equals: 871198282
+"file not loaded"
+"self assert: euler id22 equals: 871198282"
 ]
 
 { #category : #tests }
@@ -80,14 +80,14 @@ self assert: (euler id29Slow: 5) equals: 15.
 { #category : #tests }
 EulerProjectTest >> testId30 [
 
-self assert: (euler id30: 200) equals: 73682.
+self assert: (euler id30) equals: 443839.
 ]
 
 { #category : #tests }
 EulerProjectTest >> testId31 [
 
-self assert: (euler id31: 200) equals: 73682.
-self should: [euler id31: 200] notTakeMoreThanMilliseconds: 1/2.
+self assert: (euler id31_2: 200) equals: 73682.
+self should: [euler id31_2: 200] notTakeMoreThanMilliseconds: 1.
 ]
 
 { #category : #tests }

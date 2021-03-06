@@ -17,9 +17,11 @@ Integer >> isAbundant [
 
 { #category : #'*ProjectEuler' }
 Integer >> isCircularPrime [
-
-self asString permutationsDo: [ :str | str asInteger isPrime ifFalse:[ ^false ] ].
-^true
+| len m c|
+len := self asString size.
+m := 10 ** (len - 1).
+c := self deepCopy.
+^((1 to: len) collect: [ :i | c := (c * 10 + (c // m)) % (10 * m).  c ]) allSatisfy: [ :x | x isPrime ].
 ]
 
 { #category : #'*ProjectEuler' }

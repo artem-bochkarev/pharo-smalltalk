@@ -22,6 +22,20 @@ self deny: 284 isAbundant.
 ]
 
 { #category : #tests }
+NumberTests >> testIsCircularPrime [
+self assert: 13 isCircularPrime.
+self assert: 31 isCircularPrime.
+self assert: 2 isCircularPrime.
+self assert: 79 isCircularPrime.
+self assert: 197 isCircularPrime.
+self assert: 971 isCircularPrime.
+self assert: 719 isCircularPrime.
+self deny: 78 isCircularPrime.
+self assert: (( 2 to: 100) count: [ :x | x isCircularPrime  ] ) equals: 13.
+
+]
+
+{ #category : #tests }
 NumberTests >> testIsDeficient [
 
 self deny: 28 isDeficient.
