@@ -335,6 +335,16 @@ result := 0.
 
 ]
 
+{ #category : #problems }
+EulerProject >> id35: anInteger [
+
+^(2 to: anInteger) count: [:x| |isCircPrime |
+	isCircPrime := true.
+	x asString permutationsDo: [ :str | str asInteger isPrime ifFalse:[ isCircPrime := false ] ].
+	isCircPrime
+	 ]
+]
+
 { #category : #helpers }
 EulerProject >> is: aValue divisibleByAny: orderedCollection [
 

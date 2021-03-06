@@ -16,6 +16,13 @@ Integer >> isAbundant [
 ]
 
 { #category : #'*ProjectEuler' }
+Integer >> isCircularPrime [
+
+self asString permutationsDo: [ :str | str asInteger isPrime ifFalse:[ ^false ] ].
+^true
+]
+
+{ #category : #'*ProjectEuler' }
 Integer >> isDeficient [
 
 ^ self properDivisorSum < self.
@@ -30,6 +37,22 @@ Integer >> isPerfectNumber [
 { #category : #'*ProjectEuler' }
 Integer >> millions [
 ^self * 1000000
+]
+
+{ #category : #'*ProjectEuler' }
+Integer >> nextPermutation [
+
+| i str j c |
+str := self asString.
+i := str size.
+[ i > 1 and: [ (str at: i) < (str at: i - 1) ] ] whileTrue: [ i := i - 1 ].
+j := str size.
+[ j > 1 and: [ (str at: j) > (str at: i) ] ] whileTrue: [ j := j - 1 ].
+c := str at: i.
+str at: i put: (str at: j).
+str at: j put: c.
+str 
+
 ]
 
 { #category : #'*ProjectEuler' }
