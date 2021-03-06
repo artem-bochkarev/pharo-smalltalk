@@ -338,7 +338,34 @@ result := 0.
 { #category : #problems }
 EulerProject >> id35: anInteger [
 
-^(2 to: anInteger) count: [:x| x isCircularPrime ]
+^1 + ((3 to: anInteger by: 2) count: [:x| (x % 3 > 0 and: (x % 5 > 0) ) ifTrue: [x isCircularPrime] 
+	ifFalse: [ false ] ] )
+]
+
+{ #category : #problems }
+EulerProject >> id35_2 [
+
+| max vals |
+vals := #(1 3 7 9).
+max := 4 ** 7 - 4.
+^4 + ((5 to: max) count: [ :x ||base4 cur coef|
+	cur := x.
+	base4 := 0.
+	coef := 1.
+	[ base4 := base4 + (coef * (vals at: (cur-1) % 4 + 1)). coef := coef * 10.
+		cur := (cur-1) // 4. ] doWhileTrue: [cur > 0].
+	(base4 % 3 > 0) ifTrue: [base4 isCircularPrime] ifFalse: [ false ].
+])
+]
+
+{ #category : #problems }
+EulerProject >> id35_2: anInteger [
+
+| set |
+set := Set new with: 1 with: 3 with: 7 with: 9.
+
+ 1 + ((3 to: anInteger by: 2) count: [:x| (x % 3 > 0 and: (x % 5 > 0) ) ifTrue: [x isCircularPrime] 
+	ifFalse: [ false ] ] )
 ]
 
 { #category : #helpers }

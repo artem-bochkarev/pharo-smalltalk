@@ -26,6 +26,7 @@ NumberTests >> testIsCircularPrime [
 self assert: 13 isCircularPrime.
 self assert: 31 isCircularPrime.
 self assert: 2 isCircularPrime.
+self assert: 3 isCircularPrime.
 self assert: 79 isCircularPrime.
 self assert: 197 isCircularPrime.
 self assert: 971 isCircularPrime.
