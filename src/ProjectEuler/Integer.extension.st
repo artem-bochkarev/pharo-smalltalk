@@ -20,8 +20,9 @@ Integer >> isCircularPrime [
 | len m c|
 len := self asString size.
 m := 10 ** (len - 1).
-c := self deepCopy.
-^((1 to: len) collect: [ :i | c := (c * 10 + (c // m)) % (10 * m).  c ]) allSatisfy: [ :x | x isPrime ].
+c := self.
+1 to: len do: [ :i | c := (c * 10 + (c // m)) % (10 * m).  c isPrime ifFalse: [^false] ].
+^true
 ]
 
 { #category : #'*ProjectEuler' }
