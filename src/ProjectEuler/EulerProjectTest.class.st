@@ -91,6 +91,13 @@ self should: [euler id31_2: 200] notTakeMoreThanMilliseconds: 1.
 ]
 
 { #category : #tests }
+EulerProjectTest >> testId36 [
+
+self assert: (euler id36: 1 millions) equals: 872187.
+self should: [euler id36: 1 millions] notTakeMoreThanMilliseconds: 10.
+]
+
+{ #category : #tests }
 EulerProjectTest >> testIsPandigital [
 
 self assert: (euler isPandigital: 12345).

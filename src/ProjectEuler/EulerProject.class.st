@@ -347,7 +347,7 @@ EulerProject >> id35_2 [
 
 | max vals |
 vals := #(1 3 7 9).
-max := 4 ** 7 - 4.
+max := 4 ** 7.
 ^4 + ((5 to: max) count: [ :x ||base4 cur coef|
 	cur := x.
 	base4 := 0.
@@ -366,6 +366,20 @@ set := Set new with: 1 with: 3 with: 7 with: 9.
 
  1 + ((3 to: anInteger by: 2) count: [:x| (x % 3 > 0 and: (x % 5 > 0) ) ifTrue: [x isCircularPrime] 
 	ifFalse: [ false ] ] )
+]
+
+{ #category : #problems }
+EulerProject >> id36: aNumber [
+|valuesToCheck|
+valuesToCheck := OrderedCollection new.
+1 to: 9 by: 2 do: [ :a |	valuesToCheck add: a; add: 11*a.
+	0 to: 9 do: [ :b |	valuesToCheck add: 101*a + (10 * b); add: 1001*a + (110 * b).
+		0 to: 9 do: [ :c |	valuesToCheck add: 10001*a + (1010 * b) + (100*c); add: 100001*a + (10010 * b) + (1100*c). ]
+		 ]
+	 ].
+^valuesToCheck inject: 0 into: [ :sum :x|
+	(x printStringBase: 2) isPalindrome ifTrue: [ sum + x ] ifFalse: [ sum ]
+  ]
 ]
 
 { #category : #helpers }

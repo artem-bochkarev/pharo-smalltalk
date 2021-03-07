@@ -36,6 +36,12 @@ Integer >> isDeficient [
 ]
 
 { #category : #'*ProjectEuler' }
+Integer >> isPalindrome [
+^self asString isPalindrome.
+
+]
+
+{ #category : #'*ProjectEuler' }
 Integer >> isPerfectNumber [
 
 ^ self properDivisorSum = self.

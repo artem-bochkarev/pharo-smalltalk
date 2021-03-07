@@ -46,6 +46,20 @@ self deny: 220 isDeficient.
 ]
 
 { #category : #tests }
+NumberTests >> testIsPalindrome [
+
+self assert: 202 isPalindrome.
+self assert: 11 isPalindrome.
+self assert: 777 isPalindrome.
+self assert: 7777 isPalindrome.
+self deny: 123 isPalindrome. 
+self deny: 12 isPalindrome.
+self deny: 103 isPalindrome.
+
+
+]
+
+{ #category : #tests }
 NumberTests >> testIsPerfectNumber [
 
 self assert: 28 isPerfectNumber.
