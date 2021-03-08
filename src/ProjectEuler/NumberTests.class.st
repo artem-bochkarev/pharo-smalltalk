@@ -69,6 +69,18 @@ self deny: 220 isPerfectNumber.
 ]
 
 { #category : #tests }
+NumberTests >> testIsTruncatablePrime [
+
+self assert: 3797 isTruncatablePrime.
+self assert: 37 isTruncatablePrime.
+self assert: 73 isTruncatablePrime.
+self deny: 3793 isTruncatablePrime.
+self deny: 41 isTruncatablePrime.
+
+
+]
+
+{ #category : #tests }
 NumberTests >> testPrimeDivisorList [
 
 self assert: 2 primeDivisorList equals: #(2).

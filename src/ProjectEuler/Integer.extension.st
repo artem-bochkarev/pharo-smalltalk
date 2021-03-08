@@ -3,6 +3,7 @@ Extension { #name : #Integer }
 { #category : #'*ProjectEuler' }
 Integer >> divisorPower: anInteger [
 |k result|
+anInteger <= 1 ifTrue: [ ^0 ].
 k := self.
 result := 0.
 [ k % anInteger = 0 ] whileTrue: [ k := k / anInteger. result := result + 1. ].
@@ -45,6 +46,18 @@ Integer >> isPalindrome [
 Integer >> isPerfectNumber [
 
 ^ self properDivisorSum = self.
+]
+
+{ #category : #'*ProjectEuler' }
+Integer >> isTruncatablePrime [
+|str|
+self isPrime ifFalse: [ ^false ].
+str := self asString.
+str size <= 1 ifTrue: [ ^true ].
+
+1 to: str size - 1 do: [ :i | (str allButFirst: i) asInteger isPrime ifFalse: [ ^false ] ].
+1 to: str size - 1 do: [ :i | (str allButLast: i) asInteger isPrime ifFalse: [ ^false ] ].
+^true
 ]
 
 { #category : #'*ProjectEuler' }

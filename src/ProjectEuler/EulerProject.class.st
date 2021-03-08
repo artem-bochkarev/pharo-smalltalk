@@ -382,6 +382,14 @@ valuesToCheck := OrderedCollection new.
   ]
 ]
 
+{ #category : #problems }
+EulerProject >> id37 [
+
+|result|
+result := (11 to: 799997 by: 2) select: [ :x | x isTruncatablePrime  ].
+^result sum.
+]
+
 { #category : #helpers }
 EulerProject >> is: aValue divisibleByAny: orderedCollection [
 
