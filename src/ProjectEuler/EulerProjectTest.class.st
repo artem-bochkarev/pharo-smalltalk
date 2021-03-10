@@ -98,6 +98,16 @@ self should: [euler id36: 1 millions] notTakeMoreThanMilliseconds: 10.
 ]
 
 { #category : #tests }
+EulerProjectTest >> testIsId38NumberBy [
+
+self assert: (euler isId38Number: 192384576 by: 192).
+self deny: (euler isId38Number: 192384575 by: 192).
+self assert: (euler isId38Number: 192384576).
+
+self assert: (euler isId38Number: 918273645).
+]
+
+{ #category : #tests }
 EulerProjectTest >> testIsPandigital [
 
 self assert: (euler isPandigital: 12345).

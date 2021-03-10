@@ -82,6 +82,22 @@ str
 ]
 
 { #category : #'*ProjectEuler' }
+Integer >> previousPermutation [
+
+| i str j c |
+str := self asString.
+i := str size.
+[ i > 1 and: [ (str at: i) > (str at: i - 1) ] ] whileTrue: [ i := i - 1 ].
+j := str size.
+[ j > 1 and: [ (str at: j) <= (str at: i) ] ] whileTrue: [ j := j - 1 ].
+c := str at: i.
+str at: i put: (str at: j).
+str at: j put: c.
+^str asInteger 
+
+]
+
+{ #category : #'*ProjectEuler' }
 Integer >> primeDivisorList [
 
 | list k |

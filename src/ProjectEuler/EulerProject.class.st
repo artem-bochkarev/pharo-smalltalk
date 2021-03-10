@@ -390,6 +390,18 @@ result := (11 to: 799997 by: 2) select: [ :x | x isTruncatablePrime  ].
 ^result sum.
 ]
 
+{ #category : #problems }
+EulerProject >> id38 [
+
+|x|
+x := 192384576.
+'123456789' permutationsDo: [ :y ||v|
+	v := y asInteger.
+	( (v > x) and: [self isId38Number: v]) ifTrue: [ x := v ]
+	 ].
+^x
+]
+
 { #category : #helpers }
 EulerProject >> is: aValue divisibleByAny: orderedCollection [
 
@@ -407,6 +419,29 @@ EulerProject >> is: anInteger sumOfDigitsPower: aPower [
 | b |
 b := anInteger asString inject: 0 into: [ :sum :el | sum + (el digitValue ** aPower). ].
 ^ b = anInteger
+]
+
+{ #category : #helpers }
+EulerProject >> isId38Number: x [
+
+1 to: 4 do: [ :n ||a|
+	a := x // (10 ** (9 - n)).
+	(self isId38Number: x by: a) ifTrue: [ ^true ]
+].
+^false
+]
+
+{ #category : #helpers }
+EulerProject >> isId38Number: x by: y [
+
+|val str|
+str := x asString.
+val := y.
+[ str beginsWith: val asString ] whileTrue: [ 
+	str := str withoutPrefix: val asString.
+	val := val + y.
+	 ].
+^str isEmpty
 ]
 
 { #category : #helpers }

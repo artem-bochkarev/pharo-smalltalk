@@ -81,6 +81,14 @@ self deny: 41 isTruncatablePrime.
 ]
 
 { #category : #tests }
+NumberTests >> testPreviousPermutation [
+
+self assert: 987 previousPermutation equals: 978.
+self assert: 978 previousPermutation equals: 897.
+
+]
+
+{ #category : #tests }
 NumberTests >> testPrimeDivisorList [
 
 self assert: 2 primeDivisorList equals: #(2).
