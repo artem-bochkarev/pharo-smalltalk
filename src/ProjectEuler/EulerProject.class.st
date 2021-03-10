@@ -402,6 +402,20 @@ x := 192384576.
 ^x
 ]
 
+{ #category : #problems }
+EulerProject >> id38Fast [
+|max|
+max := 192384576.
+9 to: 9999 do: [ :x ||str n|
+	str := x asString, (2*x) asString.
+	n := 3.
+	[str size < 9] whileTrue: [ str := str, (n * x) asString. n := n + 1. ].
+	n := str asInteger.
+	((str size = 9) & (n > max) and: [ self isPandigital: n ]) ifTrue: [ max := x ]
+	 ].
+^max
+]
+
 { #category : #helpers }
 EulerProject >> is: aValue divisibleByAny: orderedCollection [
 
