@@ -416,6 +416,24 @@ max := 192384576.
 ^max
 ]
 
+{ #category : #problems }
+EulerProject >> id39 [
+
+	| results |
+	results := (2 to: 1000) collect: [ :p | 
+		           | aVariants |
+		           aVariants := (1 to: p // 2) select: [ :a | 
+			                        | b c rem |
+			                        b := p * (p - (2 * a)) // (2 * (p - a)).
+			                        rem := p * (p - (2 * a)) % (2 * (p - a)).
+			                        c := (a * a + (b * b)) sqrtFloor.
+			                        c * c = (a * a + (b * b)) & (b > 0)
+			                        & (a <= b) & (rem = 0) ].
+		           p -> aVariants ].
+	^ (results inject: 0->#() into: [ :max :each |
+		each value size > max value size ifTrue: [ each ] ifFalse: [ max ] ]) key
+]
+
 { #category : #helpers }
 EulerProject >> is: aValue divisibleByAny: orderedCollection [
 
